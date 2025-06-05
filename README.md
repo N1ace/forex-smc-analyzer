@@ -1,0 +1,1 @@
+# forex-smc-analyzer

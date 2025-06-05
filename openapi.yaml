@@ -1,0 +1,74 @@
+
+openapi: 3.0.0
+info:
+  title: Forex SMC API
+  version: 1.0.0
+paths:
+  /run:
+    get:
+      summary: Get analysis of a forex pair
+      parameters:
+        - name: pair
+          in: query
+          required: true
+          schema:
+            type: string
+          example: GBP/USD
+      responses:
+        '200':
+          description: Analysis result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  symbol:
+                    type: string
+                  latest_data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        datetime:
+                          type: string
+                        close:
+                          type: number
+                        rsi:
+                          type: number
+                        macd:
+                          type: number
+                        macd_signal:
+                          type: number
+                  fvg_zones:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        zone:
+                          type: array
+                          items:
+                            type: number
+                        time:
+                          type: string
+                  bos_signals:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        time:
+                          type: string
+                        direction:
+                          type: string
+                  liquidity_levels:
+                    type: object
+                    properties:
+                      highs:
+                        type: array
+                        items:
+                          type: number
+                      lows:
+                        type: array
+                        items:
+                          type: number
